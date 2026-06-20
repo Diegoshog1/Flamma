@@ -1,0 +1,435 @@
+.app {
+  padding-bottom: 40px;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+/* ── Setup ── */
+.setup-header {
+  text-align: center;
+  padding: 8px 0 16px;
+}
+
+.logo-icon {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.hint {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+.hint.center {
+  text-align: center;
+}
+
+.player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.player-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.player-num {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-width: 18px;
+  text-align: center;
+}
+
+.player-input {
+  flex: 1;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.player-input:focus {
+  border-color: var(--accent);
+}
+
+.player-input::placeholder {
+  color: var(--text-dim);
+}
+
+.btn-icon-danger {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.8rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btn-icon-danger:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.duration-row {
+  display: flex;
+  gap: 8px;
+}
+
+.duration-btn {
+  flex: 1;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 10px 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.duration-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.duration-btn:hover:not(.active) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Reveal ── */
+.reveal-header {
+  text-align: center;
+  padding: 8px 0 4px;
+}
+
+.reveal-name {
+  font-size: 1.8rem;
+  margin-top: 4px;
+}
+
+.progress-bar {
+  display: flex;
+  gap: 6px;
+  padding: 0 4px;
+}
+
+.progress-seg {
+  flex: 1;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--border);
+  transition: background 0.3s;
+}
+
+.progress-seg.done {
+  background: var(--success);
+}
+
+.progress-seg.current {
+  background: var(--accent);
+}
+
+.hidden-card {
+  text-align: center;
+  padding: 32px 20px;
+}
+
+.card-back-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.card-back-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.role-card {
+  padding: 24px 20px;
+}
+
+.role-card.spy-card {
+  border-color: rgba(233, 69, 96, 0.4);
+  background: rgba(233, 69, 96, 0.05);
+}
+
+.role-card.player-card {
+  border-color: rgba(79, 195, 247, 0.3);
+  background: rgba(79, 195, 247, 0.04);
+}
+
+.role-card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.big-icon {
+  font-size: 3.5rem;
+}
+
+.role-description {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  max-width: 240px;
+}
+
+.location-section,
+.role-section {
+  width: 100%;
+  text-align: left;
+}
+
+.field-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.field-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.location-value {
+  color: #4fc3f7;
+}
+
+.role-value {
+  color: #a5d6a7;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Game ── */
+.timer-wrap {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 8px auto;
+}
+
+.timer-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ring-bg {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 6;
+}
+
+.ring-fg {
+  fill: none;
+  stroke: #4fc3f7;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear, stroke 0.5s;
+}
+
+.timer-wrap.urgent .ring-fg {
+  stroke: var(--accent);
+}
+
+.timer-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-digits {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-urgent-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.players-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.player-badge {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.mystery-card {
+  text-align: center;
+  padding: 20px;
+}
+
+.mystery-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.mystery-text {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.mystery-sub {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.game-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  width: 100%;
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-accent:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ── End ── */
+.end-header {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.end-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.spy-reveal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 0 4px;
+}
+
+.spy-name {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.roles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.role-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--surface2);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.role-row.row-spy {
+  border: 1px solid rgba(233, 69, 96, 0.3);
+  background: rgba(233, 69, 96, 0.07);
+}
+
+.role-row-name {
+  font-weight: 600;
+}
+
+.role-row-role {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.role-row.row-spy .role-row-role {
+  color: var(--accent);
+}
