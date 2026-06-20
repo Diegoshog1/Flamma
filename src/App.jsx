@@ -317,7 +317,7 @@ function EndScreen({ assignments, reason, onRestart, onReplay }) {
       )}
 
       <button className="btn btn-primary" onClick={onReplay}>
-        🔁 Refogar — mesmos jogadores
+        🔁 Rejogar com os mesmos jogadores
       </button>
       <button className="btn btn-secondary" onClick={onRestart}>
         🔄 Novo jogo
