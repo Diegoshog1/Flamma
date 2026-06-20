@@ -266,7 +266,7 @@ function GameScreen({ assignments, duration, onEnd }) {
 
 // ─── End Screen ───────────────────────────────────────────────────────────────
 
-function EndScreen({ assignments, reason, onRestart }) {
+function EndScreen({ assignments, reason, onRestart, onReplay }) {
   const spy = assignments.find((a) => a.isSpy);
   const location = assignments.find((a) => !a.isSpy)?.location;
   const [revealed, setRevealed] = useState(false);
@@ -316,8 +316,11 @@ function EndScreen({ assignments, reason, onRestart }) {
         </div>
       )}
 
-      <button className="btn btn-primary" onClick={onRestart}>
-        🔄 Jogar novamente
+      <button className="btn btn-primary" onClick={onReplay}>
+        🔁 Refogar — mesmos jogadores
+      </button>
+      <button className="btn btn-secondary" onClick={onRestart}>
+        🔄 Novo jogo
       </button>
     </div>
   );
@@ -344,6 +347,13 @@ export default function App() {
     setPhase(PHASES.END);
   }, []);
 
+  const handleReplay = () => {
+    const players = assignments.map((a) => a.name);
+    setAssignments(assignRoles(players));
+    setRevealIndex(0);
+    setPhase(PHASES.REVEAL);
+  };
+
   return (
     <div className="app">
       {phase === PHASES.SETUP && <SetupScreen onStart={handleStart} />}
@@ -363,6 +373,7 @@ export default function App() {
           assignments={assignments}
           reason={endReason}
           onRestart={() => { setAssignments([]); setPhase(PHASES.SETUP); }}
+          onReplay={handleReplay}
         />
       )}
     </div>
