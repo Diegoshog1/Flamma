@@ -1,0 +1,209 @@
+[gd_scene load_steps=7 format=3 uid="uid://world001"]
+
+[ext_resource type="Script" path="res://scripts/World.gd" id="1_world"]
+[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="2_player"]
+[ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="3_spawner"]
+[ext_resource type="Script" path="res://scripts/UpgradeManager.gd" id="4_upgrade"]
+[ext_resource type="Script" path="res://scripts/UIManager.gd" id="5_ui"]
+[ext_resource type="Script" path="res://scripts/Background.gd" id="6_bg"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_world")
+
+[node name="Background" type="Node2D" parent="."]
+script = ExtResource("6_bg")
+z_index = -10
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(0, 0)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+enabled = true
+zoom = Vector2(1.2, 1.2)
+
+[node name="EnemySpawner" type="Node" parent="."]
+script = ExtResource("3_spawner")
+
+[node name="UpgradeManager" type="Node" parent="."]
+script = ExtResource("4_upgrade")
+
+[node name="UIManager" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("5_ui")
+
+[node name="HUD" type="Control" parent="UIManager"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HealthBarBG" type="Panel" parent="UIManager/HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 260.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="ProgressBar" parent="UIManager/HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 260.0
+offset_bottom = 40.0
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="HPLabel" type="Label" parent="UIManager/HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 260.0
+offset_bottom = 40.0
+text = "HP"
+horizontal_alignment = 1
+
+[node name="XPBarBG" type="Panel" parent="UIManager/HUD"]
+offset_left = 16.0
+offset_top = 46.0
+offset_right = 260.0
+offset_bottom = 62.0
+
+[node name="XPBar" type="ProgressBar" parent="UIManager/HUD"]
+offset_left = 16.0
+offset_top = 46.0
+offset_right = 260.0
+offset_bottom = 62.0
+max_value = 20.0
+value = 0.0
+show_percentage = false
+
+[node name="XPLabel" type="Label" parent="UIManager/HUD"]
+offset_left = 16.0
+offset_top = 46.0
+offset_right = 260.0
+offset_bottom = 62.0
+text = "XP"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="UIManager/HUD"]
+offset_left = 16.0
+offset_top = 66.0
+offset_right = 120.0
+offset_bottom = 90.0
+text = "LV 1"
+
+[node name="TimerLabel" type="Label" parent="UIManager/HUD"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 40.0
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="UpgradePanel" type="Control" parent="UIManager"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Backdrop" type="ColorRect" parent="UIManager/UpgradePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="VBox" type="VBoxContainer" parent="UIManager/UpgradePanel"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -110.0
+offset_right = 360.0
+offset_bottom = 110.0
+
+[node name="Title" type="Label" parent="UIManager/UpgradePanel/VBox"]
+text = "LEVEL UP — Choose an Upgrade"
+horizontal_alignment = 1
+
+[node name="Cards" type="HBoxContainer" parent="UIManager/UpgradePanel/VBox"]
+custom_minimum_size = Vector2(700, 160)
+alignment = 1
+
+[node name="GameOverPanel" type="Control" parent="UIManager"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BG" type="ColorRect" parent="UIManager/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.1, 0.02, 0.02, 0.85)
+
+[node name="VBox" type="VBoxContainer" parent="UIManager/GameOverPanel"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+offset_bottom = 80.0
+alignment = 1
+
+[node name="Title" type="Label" parent="UIManager/GameOverPanel/VBox"]
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="UIManager/GameOverPanel/VBox"]
+text = "The frog ronin has fallen."
+horizontal_alignment = 1
+
+[node name="RestartBtn" type="Button" parent="UIManager/GameOverPanel/VBox"]
+text = "Restart"
+
+[node name="VictoryPanel" type="Control" parent="UIManager"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BG" type="ColorRect" parent="UIManager/VictoryPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.02, 0.12, 0.04, 0.85)
+
+[node name="VBox" type="VBoxContainer" parent="UIManager/VictoryPanel"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+offset_bottom = 80.0
+alignment = 1
+
+[node name="Title" type="Label" parent="UIManager/VictoryPanel/VBox"]
+text = "VICTORY!"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="UIManager/VictoryPanel/VBox"]
+text = "The frog ronin has triumphed!"
+horizontal_alignment = 1
+
+[node name="RestartBtn" type="Button" parent="UIManager/VictoryPanel/VBox"]
+text = "Play Again"

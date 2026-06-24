@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://xporb001"]
+
+[ext_resource type="Script" path="res://scripts/XPOrb.gd" id="1_xporb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_orb"]
+radius = 6.0
+
+[node name="XPOrb" type="Area2D"]
+script = ExtResource("1_xporb")
+
+[node name="BodyDraw" type="Node2D" parent="."]
+
+[node name="OrbShape" type="Polygon2D" parent="BodyDraw"]
+polygon = PackedVector2Array(0, -6, 4, -4, 6, 0, 4, 4, 0, 6, -4, 4, -6, 0, -4, -4)
+color = Color(0.2, 0.9, 0.3, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_orb")
